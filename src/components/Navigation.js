@@ -1,12 +1,16 @@
+import './Navigation.css';
 
-const Navigation = () => {
+const Navigation = ({page, setPage}) => {
     return (
-        <div>
-            <button>
-                Available Books
+        <div className="navigation">
+            <button onClick = {() => setPage("available")}>
+                Available Stories
             </button>
-            <button>
-                Completed Books
+            <button onClick = {() => setPage("completed")}>
+                Completed Stories
+            </button>
+            <button onClick = {() => setPage("create")}>
+                Create Your Own
             </button>
         </div>
     )

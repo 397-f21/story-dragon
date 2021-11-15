@@ -1,7 +1,8 @@
+import './Banner.css';
 
 const Banner = () => {
     return (
-        <h1>Story Dragon</h1>
+        <div className="banner">Story Dragon</div>
     )
 }
 export default Banner
