@@ -11,12 +11,10 @@ import react, { useEffect, useState } from 'react';
 
 
 function App() {
-
   const [page, setPage] = useState("available");
   const [currentStory, setCurrentStory] = useState({});
   const [availableStories, setAvailableStories] = useState([]);
   const [completedStories, setCompletedStories] = useState([]);
-
   const [data, loadingData, errorData] = useData("/");
 
   useEffect(() => {
@@ -43,9 +41,9 @@ function App() {
       case "create":
         return <Create />;
       case "contribute":
-        return <Contribute currentStory={currentStory} />;
+        return <Contribute setPage={setPage} currentStory={currentStory} />;
       case "view":
-        return <View currentStory={currentStory}/>;
+        return <View setPage={setPage} currentStory={currentStory}/>;
     }
   }
 
