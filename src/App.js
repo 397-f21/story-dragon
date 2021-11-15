@@ -12,7 +12,7 @@ import react, { useEffect, useState } from 'react';
 
 function App() {
 
-  const [page, setPage] = useState("available");
+  const [page, setPage] = useState("contribute");
   const [currentStory, setCurrentStory] = useState({
     "available": true,
     "completed": false,
@@ -38,9 +38,9 @@ function App() {
       case "create":
         return <Create />;
       case "contribute":
-        return <Contribute currentStory={currentStory} />;
+        return <Contribute setPage={setPage} currentStory={currentStory} />;
       case "view":
-        return <View currentStory={currentStory}/>;
+        return <View setPage={setPage} currentStory={currentStory}/>;
     }
   }
 

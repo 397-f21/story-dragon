@@ -1,8 +1,14 @@
 import React from "react";
 
-const View = (currentStory) => {
+const View = ({setPage,currentStory}) => {
     return (
-        <p>View</p>
+        
+        <div>
+            <p>{currentStory.genre}</p>
+            <p>{currentStory.text}</p>
+            <button onClick={()=> setPage("available")}>Back</button>
+        </div>
+        
     )
 };
 

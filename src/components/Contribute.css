@@ -1,0 +1,10 @@
+.contribute textarea{
+    margin: auto;
+    padding-left: 10px;
+    width: 800px;
+    height: 600px
+}
+
+.input {
+    text-align: center;
+}
