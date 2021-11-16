@@ -10,8 +10,15 @@ const Contribute = ({ setPage, currentStory }) => {
     const [checkout, setCheckout] = useState(false);
     return (
         <div className="contribute" >
-            <p> Genre: {currentStory.genre}</p>
-            <p>{currentStory.text}</p>
+            
+            <div className="story-text">
+                <div className="story-info">
+                    <p className="title"> {currentStory.title} </p>
+                    <p className={`tag ${currentStory.genre}`}> {currentStory.genre}</p>
+                </div>
+                <p>{currentStory.text}</p> 
+            </div>
+            
             <div className="input">
                 {checkout ?
                     <div>
