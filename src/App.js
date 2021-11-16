@@ -11,30 +11,33 @@ import react, { useEffect, useState } from 'react';
 
 
 function App() {
-
-  const [page, setPage] = useState("contribute");
-  const [currentStory, setCurrentStory] = useState({
-    "available": true,
-    "completed": false,
-    "genre": "Romance",
-    "max_contributors": 5,
-    "num_contributors": 1,
-    "text": "Once upon a time, there was a princess who lived in a castle."
-});
-
+  const [page, setPage] = useState("available");
+  const [currentStory, setCurrentStory] = useState({});
+  const [availableStories, setAvailableStories] = useState([]);
+  const [completedStories, setCompletedStories] = useState([]);
   const [data, loadingData, errorData] = useData("/");
+
+  useEffect(() => {
+    if (data === undefined) return;
+    const newAvailable = [];
+    const newCompleted = [];
+    data.forEach(story => {
+      if (story.completed) newCompleted.push(story);
+      else if (story.available) newAvailable.push(story);
+    });
+    setAvailableStories(newAvailable);
+    setCompletedStories(newCompleted);
+  }, [data])
 
   if (errorData) return <h1>{errorData}</h1>;
   if (loadingData) return <h1>Loading the data...</h1>;
-  
-  console.log(data);
-  
+
   function getPage() {
     switch(page) {
       case "available":
-        return <Available data={data} setCurrentStory={setCurrentStory}/>;
+        return <Available availableStories={availableStories} setCurrentStory={setCurrentStory} setPage={setPage}/>;
       case "completed":
-        return <Completed data={data} setCurrentStory={setCurrentStory}/>;
+        return <Completed completedStories={completedStories} setCurrentStory={setCurrentStory} setPage={setPage}/>;
       case "create":
         return <Create />;
       case "contribute":

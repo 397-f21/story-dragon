@@ -6,7 +6,7 @@ const View = ({setPage,currentStory}) => {
         <div>
             <p>{currentStory.genre}</p>
             <p>{currentStory.text}</p>
-            <button onClick={()=> setPage("available")}>Back</button>
+            {/* <button onClick={()=> setPage("completed")}>Back</button> */}
         </div>
         
     )
