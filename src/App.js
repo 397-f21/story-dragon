@@ -1,5 +1,5 @@
 import './App.css';
-import { useData, setData } from './utilities/firebase.js';
+import { useData } from './utilities/firebase.js';
 import Banner from './components/Banner';
 import Navigation from './components/Navigation';
 import Available from './components/Available';
@@ -7,7 +7,7 @@ import Completed from './components/Completed';
 import Contribute from './components/Contribute';
 import Create from './components/Create';
 import View from './components/View';
-import react, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function App() {
@@ -44,15 +44,17 @@ function App() {
         return <Contribute setPage={setPage} currentStory={currentStory} />;
       case "view":
         return <View setPage={setPage} currentStory={currentStory}/>;
+      default:
+        return <p>Sorry, there's been an error.</p>
     }
   }
 
   return (
     <div>
-      <div className="nav-bar">
+      <header className="nav-bar">
         <Banner />
         <Navigation page={page} setPage={setPage} />
-      </div>
+      </header>
       <div>
         {getPage()}
       </div>
