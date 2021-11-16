@@ -1,5 +1,5 @@
 import './Navigation.css';
-import useStore from '../Story';
+import useStore from '../Store';
 
 const Navigation = () => {
     const setPage = useStore(state => state.setPage);

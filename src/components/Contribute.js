@@ -3,7 +3,7 @@ import Available from "./Available";
 import "./Contribute.css"
 import { useState } from "react";
 import { setData } from "../utilities/firebase";
-import useStore from "../Story";
+import useStore from "../Store";
 
 const Contribute = () => {
     const setPage = useStore(state => state.setPage);

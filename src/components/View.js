@@ -1,5 +1,5 @@
 import React from "react";
-import useStore from "../Story";
+import useStore from "../Store";
 
 const View = () => {
     const currentStory = useStore(state => state.currentStory);

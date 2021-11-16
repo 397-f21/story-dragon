@@ -1,6 +1,6 @@
 import React from "react";
 import "./Stories.css";
-import useStore from "../Story";
+import useStore from "../Store";
 
 const Completed = () => {
     const completedStories = useStore(state => state.completedStories);

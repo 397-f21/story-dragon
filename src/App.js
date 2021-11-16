@@ -8,7 +8,7 @@ import Contribute from './components/Contribute';
 import Create from './components/Create';
 import View from './components/View';
 import react, { useEffect, useState } from 'react';
-import useStore from './Story';
+import useStore from './Store';
 
 function App() {
   // const [page, setPage] = useState("available");

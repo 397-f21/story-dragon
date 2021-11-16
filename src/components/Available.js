@@ -1,6 +1,6 @@
 import React from "react";
 import './Stories.css';
-import useStore from "../Story";
+import useStore from "../Store";
 
 const Available = () => {
     const availableStories = useStore(state => state.availableStories);
