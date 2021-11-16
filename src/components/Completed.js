@@ -6,7 +6,7 @@ const Completed = ({ completedStories, setCurrentStory, setPage }) => {
     let count = 0;
     return (
         <div>
-            <h1>Completed Stories</h1>
+            <h2 className="pageTitle">Completed Stories</h2>
             {completedStories.map((story) => {
                 count += 1;
                 return (

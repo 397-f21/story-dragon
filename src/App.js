@@ -49,10 +49,10 @@ function App() {
 
   return (
     <div>
-      <div className="nav-bar">
+      <header className="nav-bar">
         <Banner />
         <Navigation page={page} setPage={setPage} />
-      </div>
+      </header>
       <div>
         {getPage()}
       </div>

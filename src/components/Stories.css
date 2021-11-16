@@ -1,14 +1,13 @@
 .story {
     border: 2px solid lightgrey;
     border-radius: 15px;
-    margin: 15px;
+    margin: 15px 5%;
     padding: 15px;
     display: grid;
     grid-template-columns: auto 200px;
     grid-template-rows: auto;
     grid-template-areas:
-        ". tag"
-        "text"
+        "text tag"
 }
 
 h1 {
@@ -22,40 +21,30 @@ h1 {
 .story:hover {
     background-color: lightgrey;
     cursor: pointer;
+    transition: ease-in 0.2s;
+}
+
+.Historical.Fiction, .Romance, .Science.Fiction, .Mystery {
+    margin: auto;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 5px;
+    grid-area: "tag";
 }
 
 .Historical.Fiction {
-    grid-area: "tag";
-    border: 1px solid lightblue;
-    width: fit-content;
     background-color: lightblue;
-    padding: 5px;
-    border-radius: 10px;
 }
 
 .Romance {
-    border: 1px solid pink;
     background-color:pink;
-    width: fit-content;
-    padding: 5px;
-    border-radius: 10px;
-    grid-area: "tag";
 }
 
 .Science.Fiction {
-    border: 1px solid green;
     background-color: green;
-    width: fit-content;
-    padding: 5px;
-    border-radius: 10px;
-    grid-area: "tag";
 }
 
 .Mystery {
-    border: 1px solid purple;
     background-color: purple;
-    width: fit-content;
-    padding: 5px;
-    border-radius: 10px;
-    grid-area: "tag";
+    color: white;
 }

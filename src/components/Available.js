@@ -6,7 +6,7 @@ const Available = ({ availableStories, setCurrentStory, setPage }) => {
     let count = 0;
     return (
         <div>
-            <h1>Available Stories</h1>
+            <h2 className="pageTitle">Available Stories</h2>
             {availableStories.map((story) => {
                 count += 1;
                 return (
