@@ -3,13 +3,13 @@ import './Navigation.css';
 const Navigation = ({page, setPage}) => {
     return (
         <div className="navigation">
-            <button onClick = {() => setPage("available")}>
+            <button id="available-btn" onClick = {() => setPage("available")}>
                 Available Stories
             </button>
-            <button onClick = {() => setPage("completed")}>
+            <button id="completed-btn" onClick = {() => setPage("completed")}>
                 Completed Stories
             </button>
-            <button onClick = {() => setPage("create")}>
+            <button id="create-btn" onClick = {() => setPage("create")}>
                 Create Your Own
             </button>
         </div>
