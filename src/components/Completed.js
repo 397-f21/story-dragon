@@ -8,12 +8,14 @@ const Completed = ({ completedStories, setCurrentStory, setPage }) => {
         <div>
             <h1>Completed Stories</h1>
             {completedStories.map((story) => {
+                console.log(story);
                 count += 1;
                 return (
                     <div key={count} onClick={() => { setCurrentStory(story); setPage("view"); }
                     } className="story">
+                        <h2 className="title">{story.title}</h2>
                         <p className="text">{story.text}</p>
-                        <p className={story.genre}>{story.genre}</p>
+                        <p className={"tag " + story.genre}>{story.genre}</p>
                     </div>
                 )
             })}

@@ -12,8 +12,9 @@ const Available = ({ availableStories, setCurrentStory, setPage }) => {
                 return (
                     <div key={count} onClick={() => { setCurrentStory(story); setPage("contribute"); }
                     } className="story">
+                        <h2 className="title">{story.title}</h2>
                         <p className="text">{story.text}</p>
-                        <p className={story.genre}>{story.genre}</p>
+                        <p className={"tag " + story.genre}>{story.genre}</p>
                     </div>
                 )
             })}
