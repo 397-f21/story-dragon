@@ -8,14 +8,18 @@ import Contribute from './components/Contribute';
 import Create from './components/Create';
 import View from './components/View';
 import react, { useEffect, useState } from 'react';
-
+import useStore from './Story';
 
 function App() {
-  const [page, setPage] = useState("available");
-  const [currentStory, setCurrentStory] = useState({});
-  const [availableStories, setAvailableStories] = useState([]);
-  const [completedStories, setCompletedStories] = useState([]);
+  // const [page, setPage] = useState("available");
+  // const [currentStory, setCurrentStory] = useState({});
+  // const [availableStories, setAvailableStories] = useState([]);
+  // const [completedStories, setCompletedStories] = useState([]);
   const [data, loadingData, errorData] = useData("/");
+
+  const page = useStore(state => state.page);
+  const setAvailableStories = useStore(state => state.setAvailableStories);
+  const setCompletedStories = useStore(state => state.setCompletedStories);
 
   useEffect(() => {
     if (data === undefined) return;
@@ -35,15 +39,15 @@ function App() {
   function getPage() {
     switch(page) {
       case "available":
-        return <Available availableStories={availableStories} setCurrentStory={setCurrentStory} setPage={setPage}/>;
+        return <Available />;
       case "completed":
-        return <Completed completedStories={completedStories} setCurrentStory={setCurrentStory} setPage={setPage}/>;
+        return <Completed />;
       case "create":
         return <Create />;
       case "contribute":
-        return <Contribute setPage={setPage} currentStory={currentStory} />;
+        return <Contribute />;
       case "view":
-        return <View setPage={setPage} currentStory={currentStory}/>;
+        return <View />;
     }
   }
 
@@ -51,7 +55,7 @@ function App() {
     <div>
       <div className="nav-bar">
         <Banner />
-        <Navigation page={page} setPage={setPage} />
+        <Navigation />
       </div>
       <div>
         {getPage()}

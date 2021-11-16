@@ -3,8 +3,11 @@ import Available from "./Available";
 import "./Contribute.css"
 import { useState } from "react";
 import { setData } from "../utilities/firebase";
+import useStore from "../Story";
 
-const Contribute = ({ setPage, currentStory }) => {
+const Contribute = () => {
+    const setPage = useStore(state => state.setPage);
+    const currentStory = useStore(state => state.currentStory);
 
     const [text, setText] = useState(null);
     const [checkout, setCheckout] = useState(false);

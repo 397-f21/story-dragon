@@ -1,6 +1,9 @@
 import React from "react";
+import useStore from "../Story";
 
-const View = ({setPage,currentStory}) => {
+const View = () => {
+    const currentStory = useStore(state => state.currentStory);
+
     return (
         
         <div>

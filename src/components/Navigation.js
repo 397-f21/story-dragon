@@ -1,6 +1,9 @@
 import './Navigation.css';
+import useStore from '../Story';
 
-const Navigation = ({page, setPage}) => {
+const Navigation = () => {
+    const setPage = useStore(state => state.setPage);
+
     return (
         <div className="navigation">
             <button onClick = {() => setPage("available")}>

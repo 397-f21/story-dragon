@@ -1,7 +1,11 @@
 import React from "react";
 import "./Stories.css";
+import useStore from "../Story";
 
-const Completed = ({ completedStories, setCurrentStory, setPage }) => {
+const Completed = () => {
+    const completedStories = useStore(state => state.completedStories);
+    const setCurrentStory = useStore(state => state.setCurrentStory);
+    const setPage = useStore(state => state.setPage);
     
     let count = 0;
     return (
