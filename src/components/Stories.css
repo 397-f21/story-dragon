@@ -3,19 +3,27 @@
     border-radius: 15px;
     margin: 15px 5%;
     padding: 15px;
-    display: grid;
-    grid-template-columns: auto 200px;
-    grid-template-rows: auto;
-    grid-template-areas:
-        "text tag"
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.story > p {
+    margin: 10px;
 }
 
 h1 {
     padding-left: 17px;
 }
 
-.text {
-    grid-area: "text";
+.top-row > * {
+    margin: 10px;
+}
+
+.top-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .story:hover {
@@ -24,12 +32,15 @@ h1 {
     transition: ease-in 0.2s;
 }
 
-.Historical.Fiction, .Romance, .Science.Fiction, .Mystery {
-    margin: auto;
+.tag {
     width: fit-content;
-    padding: 5px 10px;
+    padding: 5px;
     border-radius: 5px;
-    grid-area: "tag";
+}
+
+.contributors {
+    font-style: italic;
+    opacity: 80%;
 }
 
 .Historical.Fiction {
