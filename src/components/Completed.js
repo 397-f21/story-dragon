@@ -12,8 +12,8 @@ const Completed = ({ completedStories, setCurrentStory, setPage }) => {
                 return (
                     <div key={count} onClick={() => { setCurrentStory(story); setPage("view"); }
                     } className="story">
-                        <p>{story.text}</p>
-                        <p>{story.genre}</p>
+                        <p className="text">{story.text}</p>
+                        <p className={story.genre}>{story.genre}</p>
                     </div>
                 )
             })}
