@@ -9,16 +9,19 @@ const Completed = ({ completedStories, setCurrentStory, setPage }) => {
             <h1>Completed Stories</h1>
             {completedStories.map((story) => {
                 count += 1;
+                const preview = story.text.substring(0,200);
                 return (
                     <div key={count} onClick={() => { setCurrentStory(story); setPage("view"); }
                     } className="story">
-                        <p className="text">{story.text}</p>
-                        <p className={story.genre}>{story.genre}</p>
+                        <div className="top-row">
+                            <h2 className="title">{story.title}</h2>
+                            <p className={`tag ${story.genre}`}>{story.genre}</p>
+                        </div>
+                        <p className="text">{`${preview}...`}</p>
                     </div>
                 )
             })}
         </div>
-
     )
 };
 
