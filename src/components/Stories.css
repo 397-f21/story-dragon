@@ -3,24 +3,27 @@
     border-radius: 15px;
     margin: 15px;
     padding: 15px;
-    display: grid;
-    grid-template-columns: auto 200px;
-    grid-template-rows: auto;
-    grid-template-areas:
-        "title tag"
-        "text text";
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.story > p {
+    margin: 10px;
 }
 
 h1 {
     padding-left: 17px;
 }
 
-.title {
-    grid-area: title;
+.top-row > * {
+    margin: 10px;
 }
 
-.text {
-    grid-area: text;
+.top-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .story:hover {
@@ -30,9 +33,13 @@ h1 {
 
 .tag {
     width: fit-content;
-    grid-area: tag;
     padding: 5px;
     border-radius: 10px;
+}
+
+.contributors {
+    font-style: italic;
+    opacity: 80%;
 }
 
 .Historical.Fiction {
