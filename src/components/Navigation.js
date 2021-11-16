@@ -1,15 +1,31 @@
 import './Navigation.css';
 
 const Navigation = ({page, setPage}) => {
+
     return (
         <div className="navigation">
-            <button id="available-btn" onClick = {() => setPage("available")}>
+            <button onClick = {() => setPage("available")}
+                id="available-btn"
+                style={{
+                    fontWeight: page === "available" ? "bold" : "normal",
+                    backgroundColor: page === "available" ? "rgb(200, 200, 200)" : "rgb(230, 230, 230)"
+                    }}>
                 Available Stories
             </button>
-            <button id="completed-btn" onClick = {() => setPage("completed")}>
+            <button onClick = {() => setPage("completed")}
+                id="completed-btn"
+                style={{
+                    fontWeight: page === "completed" ? "bold" : "normal",
+                    backgroundColor: page === "completed" ? "rgb(200, 200, 200)" : "rgb(230, 230, 230)"
+                    }}>
                 Completed Stories
             </button>
-            <button id="create-btn" onClick = {() => setPage("create")}>
+            <button onClick = {() => setPage("create")}
+                id="create-btn"
+                style={{
+                    fontWeight: page === "create" ? "bold" : "normal",
+                    backgroundColor: page === "create" ? "rgb(200, 200, 200)" : "rgb(230, 230, 230)"
+                    }}>
                 Create Your Own
             </button>
         </div>
