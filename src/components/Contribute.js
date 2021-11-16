@@ -1,5 +1,4 @@
 import React from "react";
-import Available from "./Available";
 import "./Contribute.css"
 import { useState } from "react";
 import { setData } from "../utilities/firebase";
