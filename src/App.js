@@ -33,17 +33,17 @@ function App() {
   if (loadingData) return <h1>Loading the data...</h1>;
 
   function getPage() {
-    switch(page) {
+    switch (page) {
       case "available":
-        return <Available availableStories={availableStories} setCurrentStory={setCurrentStory} setPage={setPage}/>;
+        return <Available availableStories={availableStories} setCurrentStory={setCurrentStory} setPage={setPage} />;
       case "completed":
-        return <Completed completedStories={completedStories} setCurrentStory={setCurrentStory} setPage={setPage}/>;
+        return <Completed completedStories={completedStories} setCurrentStory={setCurrentStory} setPage={setPage} />;
       case "create":
-        return <Create />;
+        return <Create setPage={setPage} />;
       case "contribute":
         return <Contribute setPage={setPage} currentStory={currentStory} />;
       case "view":
-        return <View setPage={setPage} currentStory={currentStory}/>;
+        return <View setPage={setPage} currentStory={currentStory} />;
     }
   }
 
