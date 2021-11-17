@@ -1,4 +1,6 @@
 .banner{
-    justify-content: flex-start;
-    width:49%;
+    margin-right: auto;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
 }

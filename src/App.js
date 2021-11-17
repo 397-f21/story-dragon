@@ -1,5 +1,5 @@
 import './App.css';
-import { useData, setData } from './utilities/firebase.js';
+import { useData } from './utilities/firebase.js';
 import Banner from './components/Banner';
 import Navigation from './components/Navigation';
 import Available from './components/Available';
@@ -38,7 +38,7 @@ function App() {
   if (loadingData) return <h1>Loading the data...</h1>;
 
   function getPage() {
-    switch(page) {
+    switch (page) {
       case "available":
         return <Available />;
       case "completed":
@@ -49,15 +49,17 @@ function App() {
         return <Contribute />;
       case "view":
         return <View />;
+      default:
+        return <p>Sorry, there's been an error.</p>
     }
   }
 
   return (
     <div>
-      <div className="nav-bar">
+      <header className="nav-bar">
         <Banner />
         <Navigation />
-      </div>
+      </header>
       <div>
         {getPage()}
       </div>

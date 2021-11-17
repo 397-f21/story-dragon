@@ -1,0 +1,67 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build and unit test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - uses: actions/setup-node@v2.4.1
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npm run build --if-present
+      #- run: npm test
+  
+  cypress:
+    name: Cypress test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      # https://www.cypress.io/blog/2019/11/20/drastically-simplify-your-testing-with-cypress-github-action/
+      - uses: cypress-io/github-action@v2.9.7
+        with:
+          build: npm run build
+          start: npm start
+          wait-on: http://localhost:3000
+  slack:
+    name: Slack Notification
+    if: ${{ always() }}
+    needs: [build, cypress]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - name: Slack Notification Success
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2.2.0
+        env:
+          SLACK_COLOR: 'good'
+          SLACK_MESSAGE: 'Success'
+          SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
+          SLACK_USERNAME: ciBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Slack Notification Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.2.0
+        env:
+          SLACK_COLOR: 'danger'
+          SLACK_MESSAGE: 'Failure'
+          SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
+          SLACK_USERNAME: ciBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Slack Notification Cancelled
+        if: ${{ cancelled() }}
+        uses: rtCamp/action-slack-notify@v2.2.0
+        env:
+          SLACK_COLOR: 'warning'
+          SLACK_MESSAGE: 'Cancelled'
+          SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
+          SLACK_USERNAME: ciBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

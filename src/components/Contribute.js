@@ -1,5 +1,4 @@
 import React from "react";
-import Available from "./Available";
 import "./Contribute.css"
 import { useState } from "react";
 import { setData } from "../utilities/firebase";
@@ -10,19 +9,35 @@ const Contribute = () => {
     const currentStory = useStore(state => state.currentStory);
     const setCurrentStory = useStore(state => state.setCurrentStory);
 
-    const [text, setText] = useState(null);
+    const [text, setText] = useState(currentStory.text);
     const [checkout, setCheckout] = useState(false);
     return (
         <div className="contribute" >
-            <p> Genre: {currentStory.genre}</p>
-            <p>{currentStory.text}</p>
+            
+            <div className="story-text">
+                <div className="story-info">
+                    <p className="title"> {currentStory.title} </p>
+                    <p className={`tag ${currentStory.genre}`}> {currentStory.genre}</p>
+                </div>
+                <p>{currentStory.text}</p> 
+            </div>
+            
             <div className="input">
                 {checkout ?
                     <div>
                         <textarea
                             type="text"
                             id="text"
-                            onChange={e => setText(currentStory.text + "\n\n" + e.target.value)}>
+                            onChange={e => {
+                                var maintext;
+                                if (currentStory.text === null) {
+                                    maintext = e.target.value
+                                }
+                                else {
+                                    maintext = currentStory.text + "\n\n" + e.target.value
+                                }
+                                setText(maintext);
+                            }}>
                         </textarea>
                         <br></br>
                         <button onClick={() => {

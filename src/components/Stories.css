@@ -1,7 +1,7 @@
 .story {
     border: 2px solid lightgrey;
     border-radius: 15px;
-    margin: 15px;
+    margin: 15px 5%;
     padding: 15px;
     padding-top: 0px;
     display: flex;
@@ -29,12 +29,13 @@ h1 {
 .story:hover {
     background-color: lightgrey;
     cursor: pointer;
+    transition: ease-in 0.2s;
 }
 
 .tag {
     width: fit-content;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .contributors {
@@ -43,21 +44,19 @@ h1 {
 }
 
 .Historical.Fiction {
-    border: 1px solid lightblue;
     background-color: lightblue;
 }
 
 .Romance {
-    border: 1px solid pink;
     background-color:pink;
 }
 
 .Science.Fiction {
-    border: 1px solid lightgreen;
-    background-color: lightgreen;
+    background-color: green;
+    color: white;
 }
 
 .Mystery {
-    border: 1px solid lightcoral;
-    background-color: lightcoral;
+    background-color: purple;
+    color: white;
 }
