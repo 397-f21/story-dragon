@@ -12,7 +12,7 @@ describe('User can use the navigation to move around the app', () => {
         cy.get('#completed-page').contains('Completed Stories');
 
         cy.get('#create-btn').click();
-        cy.get('#create-page').contains('Create');
+        cy.get('.create');
 
         cy.get('#available-btn').click();
         cy.get('#available-page').contains('Available Stories');
@@ -23,6 +23,6 @@ describe('User can use the navigation to move around the app', () => {
 
         cy.get('#completed-btn').click();
         cy.get('.story').first().click();
-        cy.get('.view');
+        cy.get('.story-text');
     })
 })

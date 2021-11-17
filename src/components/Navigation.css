@@ -9,8 +9,8 @@
 
 .navigation button:hover {
     cursor: pointer;
-    font-weight: bold;
-    background-color: rgb(200, 200, 200);
+    font-weight: bold !important;
+    background-color: rgb(200, 200, 200) !important;
     transition: ease-in-out 0.3s;
 }
 
