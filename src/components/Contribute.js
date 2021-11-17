@@ -5,7 +5,7 @@ import { setData } from "../utilities/firebase";
 
 const Contribute = ({ setPage, currentStory }) => {
 
-    const [text, setText] = useState(null);
+    const [text, setText] = useState(currentStory.text);
     const [checkout, setCheckout] = useState(false);
     return (
         <div className="contribute" >
@@ -24,7 +24,16 @@ const Contribute = ({ setPage, currentStory }) => {
                         <textarea
                             type="text"
                             id="text"
-                            onChange={e => setText(currentStory.text + "\n\n" + e.target.value)}>
+                            onChange={e => {
+                                var maintext;
+                                if (currentStory.text === null) {
+                                    maintext = e.target.value
+                                }
+                                else {
+                                    maintext = currentStory.text + "\n\n" + e.target.value
+                                }
+                                setText(maintext);
+                            }}>
                         </textarea>
                         <br></br>
                         <button onClick={() => {
