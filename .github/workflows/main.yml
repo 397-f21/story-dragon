@@ -35,8 +35,8 @@ jobs:
     needs: [build, cypress]
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ github.ref_name == 'main' }}
       - uses: actions/checkout@v2.4.0
+      - if: ${{ github.ref_name == 'main' }}
       - uses: actions/setup-node@v2.4.1
         with:
           node-version: '14'
