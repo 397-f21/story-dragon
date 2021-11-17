@@ -35,13 +35,13 @@ jobs:
     needs: [build, cypress]
     runs-on: ubuntu-latest
     steps:
-      - name: Firebase deploy
-        if: ${{ github.ref_name == 'main' }}
-        uses: actions/checkout@v2.4.0
-        uses: actions/setup-node@v2.4.1
+      - uses: actions/checkout@v2.4.0
+      - uses: actions/setup-node@v2.4.1
         with:
           node-version: '14'
-      - run: npm install
+      - name: Firebase deploy
+        if: ${{ github.ref_name == 'main' }}
+        run: npm install
       - run: npm run build
       - run: npm install -g firebase-tools
       - run: firebase deploy --token "${{ secrets.FIREBASE_DEPLOY_TOKEN }}" --non-interactive
