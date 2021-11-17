@@ -35,8 +35,14 @@
 .story-info {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
+    gap: 30px;
+}
+
+.story-info::after {
+    content: '';
+    padding: 15px;
 }
 
 .story-text-full {
