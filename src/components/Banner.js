@@ -1,8 +1,11 @@
 import './Banner.css';
+import useStore from "../Store";
+import React from "react";
 
 const Banner = () => {
+    const setPage = useStore(state => state.setPage);
     return (
-        <div className="banner">Story Dragon</div>
+        <a href="/" className="banner" onClick={()=> {setPage("available")}}>Story Dragon</a>
     )
 }
 export default Banner
