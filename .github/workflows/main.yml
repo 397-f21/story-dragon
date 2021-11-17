@@ -42,14 +42,14 @@ jobs:
       - name: install
         if: ${{ github.ref_name == 'main' }}
         run: npm install
-      - name: buil
-        if: ${{ success() }}
+      - name: build
+        if: ${{ github.ref_name == 'main' }}
         run: npm run build
       - name: install firebase tools
-        if: ${{ success() }}
+        if: ${{ github.ref_name == 'main' }}
         run: npm install -g firebase-tools
       - name: Firebase deploy
-        if: ${{ success() }}
+        if: ${{ github.ref_name == 'main' }}
         run: firebase deploy --token "${{ secrets.FIREBASE_DEPLOY_TOKEN }}" --non-interactive
   success:
     name: Slack Success Notification
