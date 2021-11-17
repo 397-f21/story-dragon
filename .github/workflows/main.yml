@@ -19,7 +19,6 @@ jobs:
       - run: npm install
       - run: npm run build --if-present
       #- run: npm test
-  
   cypress:
     name: Cypress test
     runs-on: ubuntu-latest
@@ -34,6 +33,7 @@ jobs:
   deploy:
     name: Firebase deploy
     needs: [build, cypress]
+    if: ${{ github.ref_name == 'main' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
@@ -50,7 +50,7 @@ jobs:
   success:
     name: Slack Success Notification
     if: ${{ success() }}
-    needs: [deploy]
+    needs: [build, cypress]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
@@ -65,7 +65,7 @@ jobs:
   failure:
     name: Slack Failure Notification
     if: ${{ failure() }}
-    needs: [deploy]
+    needs: [build, cypress]
     runs-on: ubuntu-latest
     steps:
       - name: Slack Notification Failure
@@ -79,7 +79,7 @@ jobs:
   cancelled:
     name: Slack Cancelled Notification
     if: ${{ cancelled() }}
-    needs: [deploy]
+    needs: [build, cypress]
     runs-on: ubuntu-latest
     steps:
       - name: Slack Notification Cancelled
