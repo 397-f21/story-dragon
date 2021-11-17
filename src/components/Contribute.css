@@ -1,10 +1,70 @@
 .contribute textarea{
     margin: auto;
+    margin-top: 10px;
     padding-left: 10px;
-    width: 800px;
-    height: 600px
+    width: 75%;
+    height: 400px
 }
 
 .input {
     text-align: center;
+}
+
+.input button {
+    padding-top: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    margin: 20px 10px;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.input button:hover {
+    cursor: pointer;
+    background-color: rgb(200, 200, 200);
+    transition: ease-in-out 0.3s;
+}
+
+.story-text {
+    width: 75%;
+    margin: auto;
+    padding: 10px;
+}
+
+.story-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title {
+    font-weight: bold;
+    font-size:21px;
+}
+
+.tag {
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.Historical.Fiction {
+    border: 1px solid lightblue;
+    background-color: lightblue;
+}
+
+.Romance {
+    border: 1px solid pink;
+    background-color:pink;
+}
+
+.Science.Fiction {
+    border: 1px solid lightgreen;
+    background-color: lightgreen;
+}
+
+.Mystery {
+    border: 1px solid lightcoral;
+    background-color: lightcoral;
 }
