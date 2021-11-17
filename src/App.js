@@ -32,7 +32,7 @@ function App() {
   }, [data, setAvailableStories, setCompletedStories])
 
   if (errorData) return <h1>{errorData}</h1>;
-  // if (loadingData) return <h1></h1>;
+  if (loadingData) return <h1>Loading the data...</h1>;
 
   function getPage() {
     switch (page) {
