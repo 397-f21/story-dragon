@@ -7,22 +7,19 @@ import Completed from './components/Completed';
 import Contribute from './components/Contribute';
 import Create from './components/Create';
 import View from './components/View';
-import react, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useStore from './Store';
 
 function App() {
-  // const [page, setPage] = useState("available");
-  // const [currentStory, setCurrentStory] = useState({});
-  // const [availableStories, setAvailableStories] = useState([]);
-  // const [completedStories, setCompletedStories] = useState([]);
   const [data, loadingData, errorData] = useData("/");
-
   const page = useStore(state => state.page);
   const setAvailableStories = useStore(state => state.setAvailableStories);
   const setCompletedStories = useStore(state => state.setCompletedStories);
 
   useEffect(() => {
+    
     if (data === undefined) return;
+    
     const newAvailable = [];
     const newCompleted = [];
     console.log("data", data);
@@ -32,7 +29,7 @@ function App() {
     });
     setAvailableStories(newAvailable);
     setCompletedStories(newCompleted);
-  }, [data])
+  }, [data, setAvailableStories, setCompletedStories])
 
   if (errorData) return <h1>{errorData}</h1>;
   if (loadingData) return <h1>Loading the data...</h1>;
