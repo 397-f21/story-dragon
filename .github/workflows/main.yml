@@ -37,10 +37,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
       - uses: actions/setup-node@v2.4.1
-      - name: Firebase deploy
-        if: ${{ github.ref_name == 'main' }}
         with:
           node-version: '14'
+      - name: Firebase deploy
+        if: ${{ github.ref_name == 'main' }}
+        
         run: npm install
         run: npm run build
         run: npm install -g firebase-tools
