@@ -19,7 +19,7 @@ const Contribute = () => {
                     <p className="title"> {currentStory.title} </p>
                     <p className={`tag ${currentStory.genre}`}> {currentStory.genre}</p>
                 </div>
-                <p>{currentStory.text}</p> 
+                <p className="story-text-full">{currentStory.text}</p> 
             </div>
             
             <div className="input">

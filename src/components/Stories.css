@@ -41,7 +41,7 @@ h1 {
 
 .contributors {
     font-style: italic;
-    opacity: 80%;
+    /* opacity: 80%; */
 }
 
 .Historical.Fiction {
