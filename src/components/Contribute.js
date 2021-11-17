@@ -8,6 +8,7 @@ import useStore from "../Store";
 const Contribute = () => {
     const setPage = useStore(state => state.setPage);
     const currentStory = useStore(state => state.currentStory);
+    const setCurrentStory = useStore(state => state.setCurrentStory);
 
     const [text, setText] = useState(null);
     const [checkout, setCheckout] = useState(false);
@@ -27,6 +28,7 @@ const Contribute = () => {
                         <button onClick={() => {
                             setPage("available");
                             setData("/" + currentStory.id + "/available", true)
+                            setCurrentStory({});
                         }}>Cancel</button>
                         <button onClick={() => {
                             let new_contributors = currentStory.num_contributors + 1;
@@ -41,6 +43,7 @@ const Contribute = () => {
                             else {
                                 setData("/" + currentStory.id + "/available", true);
                             }
+                            setCurrentStory({});
                         }}> Submit </button>
                     </div>
                     :

@@ -25,6 +25,7 @@ function App() {
     if (data === undefined) return;
     const newAvailable = [];
     const newCompleted = [];
+    console.log("data", data);
     data.forEach(story => {
       if (story.completed) newCompleted.push(story);
       else if (story.available) newAvailable.push(story);
