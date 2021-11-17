@@ -1,11 +1,12 @@
 .story {
-    border: 2px solid lightgrey;
+    border: 2px solid #DDCAD9;
     border-radius: 15px;
     margin: 15px 5%;
     padding: 15px;
     padding-top: 0px;
     display: flex;
     flex-direction: column;
+    background-color: #DDCAD9;
 }
 
 .story > p {
@@ -15,6 +16,10 @@
 
 h1 {
     padding-left: 17px;
+}
+
+h2 {
+    padding-bottom: 20px;
 }
 
 .top-row > * {
@@ -28,9 +33,10 @@ h1 {
 }
 
 .story:hover {
-    background-color: lightgrey;
+    background-color: #D1B1CB;
     cursor: pointer;
     transition: ease-in 0.2s;
+    border-color: #D1B1CB;
 }
 
 .tag {
