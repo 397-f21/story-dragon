@@ -1,7 +1,10 @@
 import React from "react";
+import useStore from "../Store";
 import "./Contribute.css"
 
-const View = ({setPage,currentStory}) => {
+const View = () => {
+    const currentStory = useStore(state => state.currentStory);
+
     return (
         
         <div className="story-text">
@@ -9,7 +12,7 @@ const View = ({setPage,currentStory}) => {
             <p className="title"> {currentStory.title} </p>
             <p className={`tag ${currentStory.genre}`}> {currentStory.genre}</p>
         </div>
-        <p>{currentStory.text}</p> 
+        <p className="story-text-full">{currentStory.text}</p> 
     </div>
         
     )

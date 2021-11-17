@@ -1,10 +1,22 @@
 import './Navigation.css';
+import useStore from '../Store';
+import { setData } from "../utilities/firebase";
 
-const Navigation = ({page, setPage}) => {
+const Navigation = () => {
+    const setPage = useStore(state => state.setPage);
+    const page = useStore(state => state.page);
+    const currentStory = useStore(state => state.currentStory);
+    const setCurrentStory = useStore(state => state.setCurrentStory);
 
     return (
         <div className="navigation">
-            <button onClick = {() => setPage("available")}
+            <button onClick = {() => {
+                setPage("available");
+                if (currentStory.id !== undefined) {
+                    setData("/" + currentStory.id + "/available", true);
+                }
+                setCurrentStory({});
+            }}
                 id="available-btn"
                 style={{
                     fontWeight: page === "available" ? "bold" : "normal",
@@ -12,7 +24,13 @@ const Navigation = ({page, setPage}) => {
                     }}>
                 Available Stories
             </button>
-            <button onClick = {() => setPage("completed")}
+            <button onClick = {() => {
+                setPage("completed");
+                if (currentStory.id !== undefined) {
+                    setData("/" + currentStory.id + "/available", true);
+                }
+                setCurrentStory({});
+            }}
                 id="completed-btn"
                 style={{
                     fontWeight: page === "completed" ? "bold" : "normal",
@@ -20,7 +38,13 @@ const Navigation = ({page, setPage}) => {
                     }}>
                 Completed Stories
             </button>
-            <button onClick = {() => setPage("create")}
+            <button onClick = {() => {
+                setPage("create");
+                if (currentStory.id !== undefined) {
+                    setData("/" + currentStory.id + "/available", true);
+                }
+                setCurrentStory({});
+            }}
                 id="create-btn"
                 style={{
                     fontWeight: page === "create" ? "bold" : "normal",

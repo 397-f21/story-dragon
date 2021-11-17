@@ -2,8 +2,12 @@ import React from "react";
 import "./Contribute.css"
 import { useState } from "react";
 import { setData } from "../utilities/firebase";
+import useStore from "../Store";
 
-const Contribute = ({ setPage, currentStory }) => {
+const Contribute = () => {
+    const setPage = useStore(state => state.setPage);
+    const currentStory = useStore(state => state.currentStory);
+    const setCurrentStory = useStore(state => state.setCurrentStory);
 
     const [text, setText] = useState(currentStory.text);
     const [checkout, setCheckout] = useState(false);
@@ -39,6 +43,7 @@ const Contribute = ({ setPage, currentStory }) => {
                         <button onClick={() => {
                             setPage("available");
                             setData("/" + currentStory.id + "/available", true)
+                            setCurrentStory({});
                         }}>Cancel</button>
                         <button onClick={() => {
                             let new_contributors = currentStory.num_contributors + 1;
@@ -53,6 +58,7 @@ const Contribute = ({ setPage, currentStory }) => {
                             else {
                                 setData("/" + currentStory.id + "/available", true);
                             }
+                            setCurrentStory({});
                         }}> Submit </button>
                     </div>
                     :

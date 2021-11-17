@@ -7,27 +7,29 @@ import Completed from './components/Completed';
 import Contribute from './components/Contribute';
 import Create from './components/Create';
 import View from './components/View';
-import { useEffect, useState } from 'react';
-
+import { useEffect } from 'react';
+import useStore from './Store';
 
 function App() {
-  const [page, setPage] = useState("available");
-  const [currentStory, setCurrentStory] = useState({});
-  const [availableStories, setAvailableStories] = useState([]);
-  const [completedStories, setCompletedStories] = useState([]);
   const [data, loadingData, errorData] = useData("/");
+  const page = useStore(state => state.page);
+  const setAvailableStories = useStore(state => state.setAvailableStories);
+  const setCompletedStories = useStore(state => state.setCompletedStories);
 
   useEffect(() => {
+    
     if (data === undefined) return;
+    
     const newAvailable = [];
     const newCompleted = [];
+    console.log("data", data);
     data.forEach(story => {
       if (story.completed) newCompleted.push(story);
       else if (story.available) newAvailable.push(story);
     });
     setAvailableStories(newAvailable);
     setCompletedStories(newCompleted);
-  }, [data])
+  }, [data, setAvailableStories, setCompletedStories])
 
   if (errorData) return <h1>{errorData}</h1>;
   if (loadingData) return <h1>Loading the data...</h1>;
@@ -35,15 +37,15 @@ function App() {
   function getPage() {
     switch (page) {
       case "available":
-        return <Available availableStories={availableStories} setCurrentStory={setCurrentStory} setPage={setPage} />;
+        return <Available />;
       case "completed":
-        return <Completed completedStories={completedStories} setCurrentStory={setCurrentStory} setPage={setPage} />;
+        return <Completed />;
       case "create":
-        return <Create setPage={setPage} />;
+        return <Create />;
       case "contribute":
-        return <Contribute setPage={setPage} currentStory={currentStory} />;
+        return <Contribute />;
       case "view":
-        return <View setPage={setPage} currentStory={currentStory}/>;
+        return <View />;
       default:
         return <p>Sorry, there's been an error.</p>
     }
@@ -53,7 +55,7 @@ function App() {
     <div>
       <header className="nav-bar">
         <Banner />
-        <Navigation page={page} setPage={setPage} />
+        <Navigation />
       </header>
       <div>
         {getPage()}

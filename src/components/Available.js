@@ -1,8 +1,12 @@
 import React from "react";
 import './Stories.css';
+import useStore from "../Store";
 
-const Available = ({ availableStories, setCurrentStory, setPage }) => {
-
+const Available = () => {
+    const availableStories = useStore(state => state.availableStories);
+    const setCurrentStory = useStore(state => state.setCurrentStory);
+    const setPage = useStore(state => state.setPage);
+    
     let count = 0;
     return (
         <div>

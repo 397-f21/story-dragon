@@ -1,14 +1,15 @@
 import React from "react";
-import Available from "./Available";
 import "./Contribute.css"
 import { useState } from "react";
-import { setData } from "../utilities/firebase";
+import useStore from "../Store";
 
-const Create = ({ setPage }) => {
+
+const Create = () => {
     const [title, setTitle] = useState(null);
     const [num_contributors, setNum_contributors] = useState(2);
     const [genre, setGenre] = useState("Historical Fiction");
     const [text, setText] = useState(null);
+    const setPage = useStore(state => state.setPage);
 
     return (
         <div className="create" >
