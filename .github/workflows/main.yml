@@ -33,9 +33,9 @@ jobs:
   deploy:
     name: Firebase deploy
     needs: [build, cypress]
-    if: ${{ github.ref_name == 'main' }}
     runs-on: ubuntu-latest
     steps:
+      - if: ${{ github.ref_name == 'main' }}
       - uses: actions/checkout@v2.4.0
       - uses: actions/setup-node@v2.4.1
         with:
@@ -47,7 +47,7 @@ jobs:
   success:
     name: Slack Success Notification
     if: ${{ success() }}
-    #needs: [build, cypress]
+    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
@@ -62,7 +62,7 @@ jobs:
   failure:
     name: Slack Failure Notification
     if: ${{ failure() }}
-    #needs: [build, cypress]
+    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
       - name: Slack Notification Failure
@@ -76,7 +76,7 @@ jobs:
   cancelled:
     name: Slack Cancelled Notification
     if: ${{ cancelled() }}
-    #needs: [build, cypress]
+    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
       - name: Slack Notification Cancelled
