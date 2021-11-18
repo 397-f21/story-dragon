@@ -5,12 +5,13 @@
     padding: 8px 10px;
     border: none;
     border-radius: 5px;
+    color: #E5E9Ec;
 }
 
 .navigation button:hover {
     cursor: pointer;
     font-weight: bold !important;
-    background-color: rgb(200, 200, 200) !important;
+    background-color: #364059 !important;
     transition: ease-in-out 0.3s;
 }
 

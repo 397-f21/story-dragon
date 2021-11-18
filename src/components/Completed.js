@@ -18,7 +18,7 @@ const Completed = () => {
                     <div key={count} onClick={() => { setCurrentStory(story); setPage("view"); }
                     } className="story">
                         <div className="top-row">
-                            <h2 className="title">{story.title}</h2>
+                            <h3 className="title">{story.title}</h3>
                             <p className={`tag ${story.genre}`}>{story.genre}</p>
                         </div>
                         <p className="text">{`${preview}...`}</p>
