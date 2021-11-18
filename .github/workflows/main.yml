@@ -82,7 +82,7 @@ jobs:
       - run: npm run build
       - run: npm install -g firebase-tools
       - run: firebase deploy --token "${{ secrets.FIREBASE_DEPLOY_TOKEN }}" --non-interactive
-      - name: slack
+      - name: slack failure
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2.2.0
         env:
@@ -91,10 +91,19 @@ jobs:
           SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
           SLACK_USERNAME: ciBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      - name: slack success
+        if: ${{ success() }}
+          uses: rtCamp/action-slack-notify@v2.2.0
+          env:
+            SLACK_COLOR: 'good'
+            SLACK_MESSAGE: 'Success'
+            SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
+            SLACK_USERNAME: ciBot
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
   success:
     name: Slack Success Notification
-    if: ${{ success() }}
-    needs: [deploy]
+    if: ${{ github.ref_name != 'main' }}
+    needs: [cypress]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
@@ -103,20 +112,6 @@ jobs:
         env:
           SLACK_COLOR: 'good'
           SLACK_MESSAGE: 'Success'
-          SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
-          SLACK_USERNAME: ciBot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-  cancelled:
-    name: Slack Cancelled Notification
-    if: ${{ cancelled() }}
-    needs: [deploy]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Slack Notification Cancelled
-        uses: rtCamp/action-slack-notify@v2.2.0
-        env:
-          SLACK_COLOR: 'warning'
-          SLACK_MESSAGE: 'Cancelled'
           SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
           SLACK_USERNAME: ciBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
