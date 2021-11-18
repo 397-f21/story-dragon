@@ -93,13 +93,13 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       - name: slack success
         if: ${{ success() }}
-          uses: rtCamp/action-slack-notify@v2.2.0
-          env:
-            SLACK_COLOR: 'good'
-            SLACK_MESSAGE: 'Success'
-            SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
-            SLACK_USERNAME: ciBot
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        uses: rtCamp/action-slack-notify@v2.2.0
+        env:
+          SLACK_COLOR: 'good'
+          SLACK_MESSAGE: 'Success'
+          SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
+          SLACK_USERNAME: ciBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
   success:
     name: Slack Success Notification
     if: ${{ github.ref_name != 'main' }}
