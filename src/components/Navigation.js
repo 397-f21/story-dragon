@@ -20,7 +20,7 @@ const Navigation = () => {
                 id="available-btn"
                 style={{
                     fontWeight: page === "available" ? "bold" : "normal",
-                    backgroundColor: page === "available" ? "rgb(200, 200, 200)" : "rgb(230, 230, 230)"
+                    backgroundColor: page === "available" ? "#364059" : "#586994"
                     }}>
                 Available Stories
             </button>
@@ -34,7 +34,7 @@ const Navigation = () => {
                 id="completed-btn"
                 style={{
                     fontWeight: page === "completed" ? "bold" : "normal",
-                    backgroundColor: page === "completed" ? "rgb(200, 200, 200)" : "rgb(230, 230, 230)"
+                    backgroundColor: page === "completed" ? "#364059" : "#586994"
                     }}>
                 Completed Stories
             </button>
@@ -48,7 +48,7 @@ const Navigation = () => {
                 id="create-btn"
                 style={{
                     fontWeight: page === "create" ? "bold" : "normal",
-                    backgroundColor: page === "create" ? "rgb(200, 200, 200)" : "rgb(230, 230, 230)"
+                    backgroundColor: page === "create" ? "#364059" : "#586994"
                     }}>
                 Create Your Own
             </button>
