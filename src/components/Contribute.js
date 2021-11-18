@@ -22,7 +22,7 @@ const Contribute = () => {
                 </div>
                 <div className="story-text-full">
                 {
-                    currentStory.text.split("\n\n").map((chunk,i) => {
+                    currentStory.text.split("\n").map((chunk,i) => {
                         return <p key={i}><br/>{chunk}</p>
                     })
                 }

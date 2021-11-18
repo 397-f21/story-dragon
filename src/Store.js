@@ -12,6 +12,9 @@ const useStore = create(set => ({
 
     completedStories: [],
     setCompletedStories: (stories) => set({ completedStories: stories }),
+
+    allStories: [],
+    setAllStories: (stories) => set({ allStories: stories}),
 }));
 
 export default useStore;
