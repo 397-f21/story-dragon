@@ -2,6 +2,19 @@
     margin-right: auto;
     font-weight: bold;
     font-size: 30px;
+    display:flex;
+    align-items: center;
+}
+
+.logo {
+    float:left;
+    width:75px;
+    color: inherit;
+}
+
+.banner-text {
+    float:right;
     text-decoration: none;
+    color: inherit;
     background-color: #b1b6d1;
 }
