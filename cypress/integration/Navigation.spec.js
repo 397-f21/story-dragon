@@ -23,6 +23,6 @@ describe('User can use the navigation to move around the app', () => {
 
         cy.get('#completed-btn').click();
         cy.get('.story').first().click();
-        cy.get('.story-text');
+        cy.get('.story');
     })
 })
