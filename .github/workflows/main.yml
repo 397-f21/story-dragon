@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build and unit test
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
@@ -18,39 +18,79 @@ jobs:
           node-version: '14'
       - run: npm install
       - run: npm run build --if-present
-      #- run: npm test
+      - name: slack
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.2.0
+        env:
+          SLACK_COLOR: 'danger'
+          SLACK_MESSAGE: 'Failure in Build Job'
+          SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
+          SLACK_USERNAME: ciBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+  # jest:
+  #   name: Jest tests
+  #   needs: [build]
+  #   runs-n: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2.4.0
+  #     - uses: actions/setup-node@v2.4.1
+  #       with:
+  #         node-version: '14'
+  #     - run: npm install
+  #     - run: npm run build
+  #     - run: npm test
+  #     - name: slack
+  #       if: ${{ failure() }}
+  #       uses: rtCamp/action-slack-notify@v2.2.0
+  #       env:
+  #         SLACK_COLOR: 'danger'
+  #         SLACK_MESSAGE: 'Failure in Jest Tests'
+  #         SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
+  #         SLACK_USERNAME: ciBot
+  #         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
   cypress:
-    name: Cypress test
+    name: Cypress tests
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
-      # https://www.cypress.io/blog/2019/11/20/drastically-simplify-your-testing-with-cypress-github-action/
       - uses: cypress-io/github-action@v2.9.7
         with:
           build: npm run build
           start: npm start
           wait-on: http://localhost:3000
+      - name: slack
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.2.0
+        env:
+          SLACK_COLOR: 'danger'
+          SLACK_MESSAGE: 'Failure in Cypress Tests'
+          SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
+          SLACK_USERNAME: ciBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
   deploy:
     name: Firebase deploy
-    needs: [build, cypress]
+    if: ${{ github.ref_name == 'main' }}
+    needs: [cypress]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
       - uses: actions/setup-node@v2.4.1
         with:
           node-version: '14'
-      - name: install
-        if: ${{ github.ref_name == 'main' }}
-        run: npm install
-      - name: build
-        if: ${{ github.ref_name == 'main' }}
-        run: npm run build
-      - name: install firebase tools
-        if: ${{ github.ref_name == 'main' }}
-        run: npm install -g firebase-tools
-      - name: Firebase deploy
-        if: ${{ github.ref_name == 'main' }}
-        run: firebase deploy --token "${{ secrets.FIREBASE_DEPLOY_TOKEN }}" --non-interactive
+      - run: npm install
+      - run: npm run build
+      - run: npm install -g firebase-tools
+      - run: firebase deploy --token "${{ secrets.FIREBASE_DEPLOY_TOKEN }}" --non-interactive
+      - name: slack
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.2.0
+        env:
+          SLACK_COLOR: 'danger'
+          SLACK_MESSAGE: 'Failure in Firebase Deploy Job'
+          SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
+          SLACK_USERNAME: ciBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
   success:
     name: Slack Success Notification
     if: ${{ success() }}
@@ -58,25 +98,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
-      - name: Slack Notification Success
+      - name: Slack Success Notification
         uses: rtCamp/action-slack-notify@v2.2.0
         env:
           SLACK_COLOR: 'good'
           SLACK_MESSAGE: 'Success'
-          SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
-          SLACK_USERNAME: ciBot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-  failure:
-    name: Slack Failure Notification
-    if: ${{ failure() }}
-    needs: [deploy]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Slack Notification Failure
-        uses: rtCamp/action-slack-notify@v2.2.0
-        env:
-          SLACK_COLOR: 'danger'
-          SLACK_MESSAGE: 'Failure'
           SLACK_TITLE: CI Status for Branch ${{ github.ref_name }}
           SLACK_USERNAME: ciBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
