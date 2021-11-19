@@ -1,5 +1,5 @@
 import React from "react";
-import "./Contribute.css"
+import "./Create.css"
 import { useState } from "react";
 import useStore from "../Store";
 
@@ -12,12 +12,12 @@ const Create = () => {
     const setPage = useStore(state => state.setPage);
 
     return (
-        <div className="create" >
-            <table>
+        <>
+            <table className="create" >
                 <tr>
-                    <td>Genre: </td>
-                    <td>
-                        <select name="genre" id="genre" onChange={e => {
+                    <td class="td-1">Genre: </td>
+                    <td class="td-2">
+                        <select className="genre" name="genre" id="genre" onChange={e => {
                             setGenre(e.target.value);
                         }}>
                             <option value="Historical Fiction">Historical Fiction</option>
@@ -28,9 +28,9 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>Number of Contributors</td>
-                    <td>
-                        <select name="num_contributors" id="num_contributors" onChange={e => {
+                    <td class="td-1">Number of Contributors:</td>
+                    <td class="td-2">
+                        <select className="num_contributors" name="num_contributors" id="num_contributors" onChange={e => {
                             setNum_contributors(e.target.value);
                         }}>
                             <option value="2">2</option>
@@ -42,9 +42,9 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>title</td>
-                    <td>
-                        <div>
+                    <td class="td-1">Title:</td>
+                    <td class="td-2">
+                        <div className="title">
                             <textarea
                                 type="title"
                                 id="title"
@@ -58,9 +58,9 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>article</td>
-                    <td>
-                        <div>
+                    <td class="td-1">Article:</td>
+                    <td class="td-2">
+                        <div className="article">
                             <textarea
                                 type="text"
                                 id="text"
@@ -74,9 +74,9 @@ const Create = () => {
                         </div>
                     </td>
                 </tr>
-            </table>
+            </table >
 
-            <div>
+            <div className="btn">
                 <button onClick={() => {
                     setPage("available");
                 }}>Cancel</button>
@@ -88,7 +88,7 @@ const Create = () => {
             </div>
 
             {/* <button onClick={() => setPage("available")}>Back</button> */}
-        </div>
+        </>
     )
 };
 
