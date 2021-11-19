@@ -6,6 +6,7 @@ import useStore from "../Store";
 
 const Create = () => {
     const [title, setTitle] = useState(null);
+    const [name, setName] = useState(null);
     const [num_contributors, setNum_contributors] = useState(2);
     const [genre, setGenre] = useState("Historical Fiction");
     const [text, setText] = useState(null);
@@ -39,6 +40,20 @@ const Create = () => {
                             <option value="5">5</option>
                             <option value="6">6</option>
                         </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-1">Name:</td>
+                    <td class="td-2">
+                        <div className="name">
+                            <textarea
+                                type="name"
+                                id="name"
+                                onChange={e => {
+                                    setName(e.target.value);
+                                }}>
+                            </textarea>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -82,7 +97,7 @@ const Create = () => {
                 }}>Cancel</button>
 
                 <button onClick={() => {
-                    console.log(genre, num_contributors, title, text)
+                    console.log(genre, num_contributors, title, text, name)
                     setPage("available");
                 }}> Submit </button>
             </div>
