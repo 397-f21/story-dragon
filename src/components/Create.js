@@ -100,7 +100,7 @@ const Create = () => {
 
                 <button onClick={() => {
 
-                    console.log(genre, num_contributors, title, text)
+                    console.log(genre, num_contributors, title, text, name)
                     const id = allStories.length
                     setData("/" + id + "/text", text)
                     setData("/" + id + "/id", id)
