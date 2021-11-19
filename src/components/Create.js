@@ -1,6 +1,7 @@
 import React from "react";
 import "./Contribute.css"
 import { useState } from "react";
+import { setData } from "../utilities/firebase";
 import useStore from "../Store";
 
 
@@ -10,12 +11,13 @@ const Create = () => {
     const [genre, setGenre] = useState("Historical Fiction");
     const [text, setText] = useState(null);
     const setPage = useStore(state => state.setPage);
+    const allStories = useStore(state => state.allStories);
 
     return (
         <div className="create" >
             <table>
                 <tr>
-                    <td>Genre: </td>
+                    <td>Genre</td>
                     <td>
                         <select name="genre" id="genre" onChange={e => {
                             setGenre(e.target.value);
@@ -42,7 +44,7 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>title</td>
+                    <td>Title</td>
                     <td>
                         <div>
                             <textarea
@@ -58,7 +60,7 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>article</td>
+                    <td>Story Text</td>
                     <td>
                         <div>
                             <textarea
@@ -83,11 +85,19 @@ const Create = () => {
 
                 <button onClick={() => {
                     console.log(genre, num_contributors, title, text)
+                    const id = allStories.length
+                    setData("/" + id + "/text", text)
+                    setData("/" + id + "/id", id)
+                    setData("/" + id + "/genre", genre)
+                    setData("/" + id + "/max_contributors", parseInt(num_contributors))
+                    setData("/" + id + "/num_contributors", 1)
+                    setData("/" + id + "/title", title)
+                    setData("/" + id + "/available", true)
+                    setData("/" + id + "/completed", false)
                     setPage("available");
                 }}> Submit </button>
             </div>
 
-            {/* <button onClick={() => setPage("available")}>Back</button> */}
         </div>
     )
 };

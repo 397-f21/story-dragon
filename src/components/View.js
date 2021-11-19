@@ -11,7 +11,13 @@ const View = () => {
                 <p className="title"> {currentStory.title} </p>
                 <p className={`tag ${currentStory.genre}`}> {currentStory.genre}</p>
             </div>
-            <p className="story-text-full">{currentStory.text}</p> 
+            <div className="story-text-full">
+                {
+                    currentStory.text.split("\n").map((chunk, i) => {
+                        return <p key={i}><br />{chunk}</p>
+                    })
+                }
+            </div>
         </div>
     )
 };
