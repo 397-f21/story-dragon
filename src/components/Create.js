@@ -1,5 +1,5 @@
 import React from "react";
-import "./Contribute.css"
+import "./Create.css"
 import { useState } from "react";
 import { setData } from "../utilities/firebase";
 import useStore from "../Store";
@@ -7,6 +7,7 @@ import useStore from "../Store";
 
 const Create = () => {
     const [title, setTitle] = useState(null);
+    const [name, setName] = useState(null);
     const [num_contributors, setNum_contributors] = useState(2);
     const [genre, setGenre] = useState("Historical Fiction");
     const [text, setText] = useState(null);
@@ -14,12 +15,12 @@ const Create = () => {
     const allStories = useStore(state => state.allStories);
 
     return (
-        <div className="create" >
-            <table>
+        <div>
+            <table className="create" >
                 <tr>
-                    <td>Genre</td>
-                    <td>
-                        <select name="genre" id="genre" onChange={e => {
+                    <td class="td-1">Genre: </td>
+                    <td class="td-2">
+                        <select className="genre" name="genre" id="genre" onChange={e => {
                             setGenre(e.target.value);
                         }}>
                             <option value="Historical Fiction">Historical Fiction</option>
@@ -30,9 +31,9 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>Number of Contributors</td>
-                    <td>
-                        <select name="num_contributors" id="num_contributors" onChange={e => {
+                    <td class="td-1">Number of Contributors:</td>
+                    <td class="td-2">
+                        <select className="num_contributors" name="num_contributors" id="num_contributors" onChange={e => {
                             setNum_contributors(e.target.value);
                         }}>
                             <option value="2">2</option>
@@ -44,9 +45,23 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>Title</td>
-                    <td>
-                        <div>
+                    <td class="td-1">Name:</td>
+                    <td class="td-2">
+                        <div className="name">
+                            <textarea
+                                type="name"
+                                id="name"
+                                onChange={e => {
+                                    setName(e.target.value);
+                                }}>
+                            </textarea>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-1">Title:</td>
+                    <td class="td-2">
+                        <div className="title">
                             <textarea
                                 type="title"
                                 id="title"
@@ -60,9 +75,9 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td>Story Text</td>
-                    <td>
-                        <div>
+                    <td class="td-1">Story Text:</td>
+                    <td class="td-2">
+                        <div className="article">
                             <textarea
                                 type="text"
                                 id="text"
@@ -76,15 +91,16 @@ const Create = () => {
                         </div>
                     </td>
                 </tr>
-            </table>
+            </table >
 
-            <div>
+            <div className="btn">
                 <button onClick={() => {
                     setPage("available");
                 }}>Cancel</button>
 
                 <button onClick={() => {
-                    console.log(genre, num_contributors, title, text)
+
+                    console.log(genre, num_contributors, title, text, name)
                     const id = allStories.length
                     setData("/" + id + "/text", text)
                     setData("/" + id + "/id", id)
@@ -98,6 +114,7 @@ const Create = () => {
                 }}> Submit </button>
             </div>
 
+            {/* <button onClick={() => setPage("available")}>Back</button> */}
         </div>
     )
 };
