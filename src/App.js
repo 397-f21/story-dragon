@@ -15,6 +15,7 @@ function App() {
   const page = useStore(state => state.page);
   const setAvailableStories = useStore(state => state.setAvailableStories);
   const setCompletedStories = useStore(state => state.setCompletedStories);
+  const setAllStories = useStore(state => state.setAllStories)
 
   useEffect(() => {
     
@@ -23,13 +24,14 @@ function App() {
     const newAvailable = [];
     const newCompleted = [];
     console.log("data", data);
+    setAllStories(data);
     data.forEach(story => {
       if (story.completed) newCompleted.push(story);
       else if (story.available) newAvailable.push(story);
     });
     setAvailableStories(newAvailable);
     setCompletedStories(newCompleted);
-  }, [data, setAvailableStories, setCompletedStories])
+  }, [data, setAvailableStories, setCompletedStories, setAllStories])
 
   if (errorData) return <h1>{errorData}</h1>;
   if (loadingData) return <h1>Loading the data...</h1>;

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Create.css"
 import { useState } from "react";
+import { setData } from "../utilities/firebase";
 import useStore from "../Store";
 
 
@@ -11,9 +12,10 @@ const Create = () => {
     const [genre, setGenre] = useState("Historical Fiction");
     const [text, setText] = useState(null);
     const setPage = useStore(state => state.setPage);
+    const allStories = useStore(state => state.allStories);
 
     return (
-        <>
+        <div>
             <table className="create" >
                 <tr>
                     <td class="td-1">Genre: </td>
@@ -73,7 +75,7 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td class="td-1">Article:</td>
+                    <td class="td-1">Story Text:</td>
                     <td class="td-2">
                         <div className="article">
                             <textarea
@@ -97,13 +99,23 @@ const Create = () => {
                 }}>Cancel</button>
 
                 <button onClick={() => {
-                    console.log(genre, num_contributors, title, text, name)
+
+                    console.log(genre, num_contributors, title, text)
+                    const id = allStories.length
+                    setData("/" + id + "/text", text)
+                    setData("/" + id + "/id", id)
+                    setData("/" + id + "/genre", genre)
+                    setData("/" + id + "/max_contributors", parseInt(num_contributors))
+                    setData("/" + id + "/num_contributors", 1)
+                    setData("/" + id + "/title", title)
+                    setData("/" + id + "/available", true)
+                    setData("/" + id + "/completed", false)
                     setPage("available");
                 }}> Submit </button>
             </div>
 
             {/* <button onClick={() => setPage("available")}>Back</button> */}
-        </>
+        </div>
     )
 };
 
