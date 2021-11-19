@@ -31,7 +31,7 @@ function App() {
     });
     setAvailableStories(newAvailable);
     setCompletedStories(newCompleted);
-  }, [data, setAvailableStories, setCompletedStories])
+  }, [data, setAvailableStories, setCompletedStories, setAllStories])
 
   if (errorData) return <h1>{errorData}</h1>;
   if (loadingData) return <h1>Loading the data...</h1>;
