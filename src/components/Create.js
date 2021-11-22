@@ -18,8 +18,8 @@ const Create = () => {
         <div>
             <table className="create" >
                 <tr>
-                    <td class="td-1">Genre: </td>
-                    <td class="td-2">
+                    <td className="td-1">Genre: </td>
+                    <td className="td-2">
                         <select className="genre" name="genre" id="genre" onChange={e => {
                             setGenre(e.target.value);
                         }}>
@@ -31,8 +31,8 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td class="td-1">Number of Contributors:</td>
-                    <td class="td-2">
+                    <td className="td-1">Number of Contributors:</td>
+                    <td className="td-2">
                         <select className="num_contributors" name="num_contributors" id="num_contributors" onChange={e => {
                             setNum_contributors(e.target.value);
                         }}>
@@ -44,20 +44,7 @@ const Create = () => {
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td class="td-1">Name:</td>
-                    <td class="td-2">
-                        <div className="name">
-                            <textarea
-                                type="name"
-                                id="name"
-                                onChange={e => {
-                                    setName(e.target.value);
-                                }}>
-                            </textarea>
-                        </div>
-                    </td>
-                </tr>
+
                 <tr>
                     <td class="td-1">Title:</td>
                     <td class="td-2">
@@ -75,8 +62,8 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td class="td-1">Story Text:</td>
-                    <td class="td-2">
+                    <td className="td-1">Story Text:</td>
+                    <td className="td-2">
                         <div className="article">
                             <textarea
                                 type="text"
@@ -88,6 +75,20 @@ const Create = () => {
                                 }}>
                             </textarea>
                             <br></br>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td className="td-1">Sign Your Name:</td>
+                    <td className="td-2">
+                        <div className="name">
+                            <textarea
+                                type="name"
+                                id="name"
+                                onChange={e => {
+                                    setName(e.target.value);
+                                }}>
+                            </textarea>
                         </div>
                     </td>
                 </tr>
