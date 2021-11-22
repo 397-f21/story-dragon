@@ -100,9 +100,6 @@ const Contribute = () => {
                                     setData("/" + currentStory.id + "/completed", true);
                                 }
                                 else {
-
-                                    maintext = currentStory.text + "\n" + e.target.value
-
                                     setData("/" + currentStory.id + "/available", true);
 
                                 }
