@@ -41,7 +41,7 @@ const Contribute = () => {
                                     maintext = e.target.value
                                 }
                                 else {
-                                    maintext = currentStory.text + "\n\n" + e.target.value
+                                    maintext = currentStory.text + "\n" + e.target.value
                                 }
                                 setText(maintext);
                             }}>
