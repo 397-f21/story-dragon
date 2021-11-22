@@ -101,6 +101,7 @@ const Contribute = () => {
                                 }
                                 else {
                                     setData("/" + currentStory.id + "/available", true);
+
                                 }
                                 setCurrentStory({});
                             }}> Submit </button>
