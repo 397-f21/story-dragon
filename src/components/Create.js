@@ -31,7 +31,7 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td className="td-1">Number of Contributors:</td>
+                    <td className="td-1">Total Number of Contributors:</td>
                     <td className="td-2">
                         <select className="num_contributors" name="num_contributors" id="num_contributors" onChange={e => {
                             setNum_contributors(e.target.value);
@@ -46,7 +46,7 @@ const Create = () => {
                 </tr>
 
                 <tr>
-                    <td class="td-1">Title:</td>
+                    <td class="td-1">Story Title:</td>
                     <td class="td-2">
                         <div className="title">
                             <textarea
@@ -79,7 +79,7 @@ const Create = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td className="td-1">Sign Your Name:</td>
+                    <td className="td-1">Your Name:</td>
                     <td className="td-2">
                         <div className="name">
                             <textarea
@@ -111,6 +111,7 @@ const Create = () => {
                     setData("/" + id + "/title", title)
                     setData("/" + id + "/available", true)
                     setData("/" + id + "/completed", false)
+                    setData("/" + id + "/names/" + 0, name);
                     setPage("available");
                 }}> Submit </button>
             </div>

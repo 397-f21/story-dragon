@@ -18,19 +18,3 @@ const Banner = () => {
     )
 }
 export default Banner
-
-// <>
-//             <div className="banner">
-//                 <ul>
-//                     <li>
-//                         <img
-//                             src={logo}
-//                             alt="Northwestern Logo"
-//                         />
-//                     </li>
-//                     <li className="topic">
-//                         <span><a href="/" className="banner" onClick={()=> {setPage("available")}}>Story Dragon</a></span>
-//                     </li>
-//                 </ul>
-//             </div>
-//         </>

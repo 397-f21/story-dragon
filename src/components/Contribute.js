@@ -25,7 +25,7 @@ const Contribute = () => {
 
             <table className="story-text">
                 <tr>
-                    <td className="td-1">Old Story Text:</td>
+                    <td className="td-1">Story Text:</td>
                     <td className="td-2">
                         <div className="story-text-full">
                             {
@@ -45,7 +45,7 @@ const Contribute = () => {
                         <div>
                             <table className="inputText">
                                 <tr>
-                                    <td className="td-1">New Story Text:</td>
+                                    <td className="td-1">Your Contribution:</td>
                                     <td className="td-2">
                                         <div className="article">
                                             <textarea
@@ -66,7 +66,7 @@ const Contribute = () => {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td className="td-1">Sign Your Name:</td>
+                                    <td className="td-1">Your Name:</td>
                                     <td className="td-2">
                                         <div className="name">
                                             <textarea
@@ -95,6 +95,7 @@ const Contribute = () => {
                                 setPage("available");
                                 setData("/" + currentStory.id + "/text", text);
                                 setData("/" + currentStory.id + "/num_contributors", new_contributors);
+                                setData("/" + currentStory.id + "/names/" + currentStory.num_contributors, name);
                                 if (new_contributors >= currentStory.max_contributors) {
                                     setData("/" + currentStory.id + "/available", false);
                                     setData("/" + currentStory.id + "/completed", true);
