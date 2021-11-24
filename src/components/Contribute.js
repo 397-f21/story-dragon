@@ -12,8 +12,7 @@ const Contribute = () => {
     const [text, setText] = useState(currentStory.text);
     const [name, setName] = useState(null);
     const [checkout, setCheckout] = useState(false);
-    const [checkoutTime, setCheckoutTime] = useState(null);
-    
+
     return (
         
         <div className="contribute" >
