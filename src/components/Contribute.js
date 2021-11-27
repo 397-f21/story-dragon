@@ -18,6 +18,7 @@ const Contribute = () => {
             <div className="story-text">
                 <div className="story-info">
                     <p className="title"> {currentStory.title} </p>
+                    <p className="authors"> Authors: {currentStory.names.join(', ')}</p>
                     <p className={`tag ${currentStory.genre}`}> {currentStory.genre}</p>
                     <p className="contributors">{`${currentStory.num_contributors}/${currentStory.max_contributors} Story Parts Complete`}</p>
                 </div>
