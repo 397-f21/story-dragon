@@ -12,7 +12,9 @@ const Contribute = () => {
     const [text, setText] = useState(currentStory.text);
     const [name, setName] = useState(null);
     const [checkout, setCheckout] = useState(false);
+
     return (
+        
         <div className="contribute" >
 
             <div className="story-text">
@@ -30,7 +32,7 @@ const Contribute = () => {
                         <div className="story-text-full">
                             {
                                 currentStory.text.split("\n").map((chunk, i) => {
-                                    return <p key={i}><br />{chunk}</p>
+                                    return <><p key={i}>{chunk}</p><br/></>
                                 })
                             }
                         </div>
@@ -112,7 +114,8 @@ const Contribute = () => {
                     <div className="btn">
                         <button onClick={() => {
                             setCheckout(true);
-                            setData("/" + currentStory.id + "/available", false)
+                            localStorage.setItem('currentStoryid', currentStory.id);
+                            setData("/" + currentStory.id + "/available", false);
                         }}> Check This Story Out </button>
                     </div>
                 }
