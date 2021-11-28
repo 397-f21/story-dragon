@@ -1,12 +1,21 @@
 import React from "react";
 import './Stories.css';
 import useStore from "../Store";
+import { setData } from "../utilities/firebase";
 
 const Available = () => {
     const availableStories = useStore(state => state.availableStories);
     const setCurrentStory = useStore(state => state.setCurrentStory);
     const setPage = useStore(state => state.setPage);
+
+    if (localStorage.getItem("currentStoryid")) {
+        let currentStoryid = localStorage.getItem('currentStoryid');
+        setData("/" + currentStoryid  + "/available", true);
+        localStorage.removeItem("currentStoryid")
+    }
+
     
+
     let count = 0;
     return (
         <div>
