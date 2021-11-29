@@ -23,7 +23,6 @@ function App() {
     
     const newAvailable = [];
     const newCompleted = [];
-    console.log("data", data);
     setAllStories(data);
     data.forEach(story => {
       if (story.completed) newCompleted.push(story);

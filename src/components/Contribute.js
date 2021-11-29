@@ -92,7 +92,6 @@ const Contribute = () => {
                                 setCurrentStory({});
                             }}>Cancel</button>
                             <button onClick={() => {
-                                console.log(name)
                                 let new_contributors = currentStory.num_contributors + 1;
                                 setCheckout(false);
                                 setPage("available");

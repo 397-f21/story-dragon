@@ -95,22 +95,3 @@
     border-radius: 5px;
 }
 
-.Historical.Fiction {
-    border: 1px solid lightblue;
-    background-color: lightblue;
-}
-
-.Romance {
-    border: 1px solid pink;
-    background-color:pink;
-}
-
-.Science.Fiction {
-    border: 1px solid lightgreen;
-    background-color: lightgreen;
-}
-
-.Mystery {
-    border: 1px solid lightcoral;
-    background-color: lightcoral;
-}

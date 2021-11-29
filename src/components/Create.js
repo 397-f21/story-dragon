@@ -14,6 +14,9 @@ const Create = () => {
     const setPage = useStore(state => state.setPage);
     const allStories = useStore(state => state.allStories);
 
+    const genres = ["Historical Fiction", "Mystery", "Romance", "Science Fiction", "Young Adult", "Action and Adventure", "Fantasy", 
+        "Horror", "Thriller", "Poetry", "Children", "Drama"];
+
     return (
         <div>
             <table className="create" >
@@ -23,10 +26,11 @@ const Create = () => {
                         <select className="genre" name="genre" id="genre" onChange={e => {
                             setGenre(e.target.value);
                         }}>
-                            <option value="Historical Fiction">Historical Fiction</option>
-                            <option value="Mystery">Mystery</option>
-                            <option value="Romance">Romance</option>
-                            <option value="Science Fiction">Science Fiction</option>
+                            {genres.map((gen) => {
+                                return (
+                                    <option key={gen} value={gen}>{gen}</option>
+                                )
+                            })}
                         </select>
                     </td>
                 </tr>
@@ -46,8 +50,8 @@ const Create = () => {
                 </tr>
 
                 <tr>
-                    <td class="td-1">Story Title:</td>
-                    <td class="td-2">
+                    <td className="td-1">Story Title:</td>
+                    <td className="td-2">
                         <div className="title">
                             <textarea
                                 type="title"
@@ -100,8 +104,6 @@ const Create = () => {
                 }}>Cancel</button>
 
                 <button onClick={() => {
-
-                    console.log(genre, num_contributors, title, text, name)
                     const id = allStories.length
                     setData("/" + id + "/text", text)
                     setData("/" + id + "/id", id)

@@ -43,6 +43,7 @@ h2 {
     width: fit-content;
     padding: 5px;
     border-radius: 5px;
+    color: white;
 }
 
 .contributors {
@@ -51,19 +52,61 @@ h2 {
 }
 
 .Historical.Fiction {
-    background-color: lightblue;
+    border: 1px solid dodgerblue;
+    background-color:dodgerblue;
 }
 
 .Romance {
-    background-color:pink;
+    border: 1px solid orchid;
+    background-color:orchid;
 }
 
 .Science.Fiction {
-    background-color: green;
-    color: white;
+    border: 1px solid mediumseagreen;
+    background-color:mediumseagreen;
 }
 
 .Mystery {
-    background-color: purple;
-    color: white;
+    border: 1px solid lightcoral;
+    background-color:lightcoral;
+}
+
+.Young.Adult {
+    border: 1px solid lightseagreen;
+    background-color: lightseagreen;
+}
+
+.Action.and.Adventure {
+    border: 1px solid palevioletred;
+    background-color:palevioletred;
+}
+
+.Fantasy {
+    border: 1px solid peru;
+    background-color:peru;
+}
+
+.Horror {
+    border: 1px solid slateblue;
+    background-color:slateblue;
+}
+
+.Poetry {
+    border: 1px solid rosybrown;
+    background-color:rosybrown;
+}
+
+.Thriller {
+    border: 1px solid slategrey;
+    background-color: slategrey;
+}
+
+.Children {
+    border: 1px solid sandybrown;
+    background-color:sandybrown;
+}
+
+.Drama {
+    border: 1px solid steelblue;
+    background-color:steelblue;
 }
